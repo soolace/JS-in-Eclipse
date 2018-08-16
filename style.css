@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+body{
+
+	background: darkgrey;
+	
+}
+
+
+.has-error{
+    border: 5px;
+    border-color: red;
+ 
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formular with validation</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+	<form novalidate id="my-form" action="" method="post">
+		<h3>Formular</h3>
+		<div class="form-group">
+			<label for="i_name">Name</label> <input type="text" id="i_name"
+				name="i_name" minlength="2" class="form-control" placeholder="Max">
+		</div>
+
+		<div class="form-group">
+			<label for="i_name2">Familyname</label> <input type="text" id="i_name2"
+				name="i_name2" minlength="2" class="form-control"
+				placeholder="Muster">
+		</div>
+
+		<div>
+			<label for="i_mail">Email</label> <input type="email" id="i_mail"
+				name="i_mail" minlength="2" class="form-control"
+				placeholder="muster@muster">
+		</div>
+
+	</form>
+		<br> <br> <input type="Reset" value="Reset"> <input
+			type="Submit" value="Submit" onclick="checkForm()">
+
+
+	<script src="javascript.js"></script>
+</body>
+</html>
