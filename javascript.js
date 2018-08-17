@@ -28,7 +28,7 @@ function checkForm() {
 	} else {
 		clearError(textInputField);
 	}
-	
+
 	var telInputField = document.getElementById('i_tel');
 	var tel = telInputField.value;
 	if (tel.length < 10) {
@@ -36,7 +36,7 @@ function checkForm() {
 	} else {
 		clearError(telInputField);
 	}
-	
+
 	var textInputField = document.getElementById('i_bday');
 	var bday = textInputField.value;
 	if (bday.length < 10) {
@@ -44,7 +44,7 @@ function checkForm() {
 	} else {
 		clearError(textInputField);
 	}
-	
+
 }
 
 // setError function
@@ -61,3 +61,39 @@ function clearError(element) {
 	element.title = "";
 }
 
+function pageBackground() {
+	if (document.getElementById('i_name').value == "") {
+		document.getElementById('i_name').style.backgroundColor = "#FFC0CB";
+	} else {
+		document.getElementById('i_name').style.backgroundColor = "#ADFF2F";
+
+	}
+	
+	if (document.getElementById('i_name2').value == ""){
+		document.getElementById('i_name2').style.backgroundColor="#FFC0CB";
+	}else {
+		document.getElementById('i_name2').style.backgroundColor="#ADFF2F";
+		
+	}
+	
+	if (document.getElementById('i_bday').value == ""){
+		document.getElementById('i_bday').style.backgroundColor="#FFC0CB";
+	}else {
+		document.getElementById('i_bday').style.backgroundColor="#ADFF2F";
+		
+	}
+	
+	if (document.getElementById('i_tel').value == ""){
+		document.getElementById('i_tel').style.backgroundColor="#FFC0CB";
+	}else {
+		document.getElementById('i_tel').style.backgroundColor="#ADFF2F";
+		
+	}
+	
+	if (document.getElementById('i_mail').value == ""){
+		document.getElementById('i_mail').style.backgroundColor="#FFC0CB";
+	}else {
+		document.getElementById('i_mail').style.backgroundColor="#ADFF2F";
+		
+	}
+}
