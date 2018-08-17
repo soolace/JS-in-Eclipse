@@ -98,5 +98,5 @@ function pageBackground() {
 		
 	}
 	
-	document.getElementById('i_area').style.backgroundColor="#ADFF2F";
+	document.getElementById('i_area').style.backgroundColor="#FFFFF0";
 }
