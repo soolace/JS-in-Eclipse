@@ -1,7 +1,7 @@
 /**
  * javascript file for the check-function
  */
-
+//check the forms
 function checkForm() {
 	var emailInputField = document.getElementById('i_mail');
 	var email = emailInputField.value;
@@ -61,6 +61,7 @@ function clearError(element) {
 	element.title = "";
 }
 
+// change the color of the background-function
 function pageBackground() {
 	if (document.getElementById('i_name').value == "") {
 		document.getElementById('i_name').style.backgroundColor = "#FFC0CB";
@@ -96,4 +97,6 @@ function pageBackground() {
 		document.getElementById('i_mail').style.backgroundColor="#ADFF2F";
 		
 	}
+	
+	document.getElementById('i_area').style.backgroundColor="#ADFF2F";
 }
