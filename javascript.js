@@ -100,3 +100,10 @@ function pageBackground() {
 	
 	document.getElementById('i_area').style.backgroundColor="#FFFFF0";
 }
+
+//ClickButton Functions
+
+function showMessage(){
+	document.getElementById("hiddenMessage").style.display='block';
+}
+

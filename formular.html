@@ -7,56 +7,78 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="javascript.js"></script>
 </head>
 
 <body onLoad="pageBackground()">
-<div class="wrapper">
+	<div class="wrapper">
+		<header class="header"> Contactformular </header>
+		<nav class="navigation">
+			<a class="active" href="index.html">Home</a> <a href="#news">News</a>
+			<a href="#contact">Contact</a> <a href="formular.html">Formular</a> <a
+				href="#about">About</a>
+		</nav>
 
-	<form id="my-form" action="" method="post">
-		<h3>Formular</h3>
-		<div class="form-group">
-			<label for="i_name">Name</label> <input type="text" id="i_name"
-				name="i_name" minlength="2" class="form-control" placeholder="Max"
-				onChange="pageBackground()">
-		</div>
+		<form id="my-form" action="" method="post">
+			<h3>Formular</h3>
+			<div class="form-group">
+				<label for="i_name">Name</label> <input type="text" id="i_name"
+					name="i_name" minlength="2" class="form-control" placeholder="Max"
+					onChange="pageBackground()">
+			</div>
 
-		<div class="form-group">
-			<label for="i_name2">Familyname</label> <input type="text"
-				id="i_name2" name="i_name2" minlength="2" class="form-control"
-				placeholder="Muster" onChange="pageBackground()">
-		</div>
+			<div class="form-group">
+				<label for="i_name2">Familyname</label> <input type="text"
+					id="i_name2" name="i_name2" minlength="2" class="form-control"
+					placeholder="Muster" onChange="pageBackground()">
+			</div>
 
-		<div class="form-group">
-			<label for="i_bday">Birthday</label> <input type="date" id="i_bday"
-				name="i_bday" class="form-control" placeholder="dd.mm.yyyy"
-				onChange="pageBackground()">
-		</div>
+			<div class="form-group">
+				<label for="i_bday">Birthday</label> <input type="date" id="i_bday"
+					name="i_bday" class="form-control" placeholder="dd.mm.yyyy"
+					onChange="pageBackground()">
+			</div>
 
-		<div class="form-group">
-			<label for="i_tel">Phone</label> <input type="tel" id="i_tel"
-				name="i_tel" class="form-control" placeholder="+41123456789"
-				onChange="pageBackground()">
-		</div>
+			<div class="form-group">
+				<label for="i_tel">Phone</label> <input type="tel" id="i_tel"
+					name="i_tel" class="form-control" placeholder="+41123456789"
+					onChange="pageBackground()">
+			</div>
 
-		<div>
-			<label for="i_mail">Email</label> <input type="email" id="i_mail"
-				name="i_mail" minlength="2" class="form-control"
-				placeholder="muster@muster" onChange="pageBackground()">
-		</div>
-		<br>
-		<div>
-			<label for="i_area">Comments</label><br>
-			<textarea id="i_area" name="i_area" cols="35" rows="4" placeholder="Your Question, Feedback, ..."></textarea>
-		</div>
+			<div>
+				<div class="form-group">
+					<label for="i_mail">Email</label> <input type="email" id="i_mail"
+						name="i_mail" minlength="2" class="form-control"
+						placeholder="muster@muster" onChange="pageBackground()">
+				</div>
+				<div class="form-group">
+					<label for="i_pw">Password</label> <input type="password" id="i_pw"
+						name="i_pw" minlength="7" class="form-control" required>
+				</div>
 
-		<br> <input type="Reset" value="Reset">
-	</form>
-	<br>
-	<input type="Submit" value="Submit" onclick="checkForm()">
+				<div class="form-group">
+					<label for="i_pw2">repeat the password</label> <input
+						type="password" id="i_pw2" name="i_pw2" minlength="7"
+						class="form-control" required>
+				</div>
+
+				<div class="form-group">
+					<label for="i_area">Comments</label><br>
+					<textarea id="i_area" name="i_area" cols="35" rows="4"
+						placeholder="Your Question, Feedback, ..."></textarea>
+				</div>
+
+			</div>
 
 
-</div>
+			<br> <input type="Reset" value="Reset">
+		</form>
+		<br> <input type="Submit" value="Submit" onclick="checkForm()">
+
+
+	</div>
 </body>
 </html>
