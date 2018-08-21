@@ -24,12 +24,14 @@
 				alert("Read this: " + randomNumber);
 
 				input = prompt("type your memories");
-				document.write(randomNumber);
+				document.write(randomNumber + "<br>");
+				
 			} while (randomNumber == input);
 
-			var result = length;
+			var result = length -1;
+			if(result <3) result = 0;
 			document.write("your result is: " + result
-					+ ", \nhow bad is that? ");
+					+ "<br> how bad is that? ");
 		</script>
 	</p>
 
