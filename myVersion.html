@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>train your brain</title>
+</head>
+<body>
+
+	<p>
+		<script>
+			var randomNumber, input, length = 3, counter = 0;
+			alert("Read the following letters and write again");
+
+			do {
+				counter++;
+				if (counter > 1) {
+					length++;
+					counter = 1;
+				}
+				randomNumber = "";
+				for (var i = 1; i <= length; i++) {
+					randomNumber += Math.floor(Math.random() * 10);
+				}
+				alert("Read this: " + randomNumber);
+
+				input = prompt("type your memories");
+				document.write(randomNumber);
+			} while (randomNumber == input);
+
+			var result = length;
+			document.write("your result is: " + result
+					+ ", \nhow bad is that? ");
+		</script>
+	</p>
+
+
+</body>
+</html>
