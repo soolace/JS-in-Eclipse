@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.body{
+	  justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 60px 60px 60px 60px;
+
+}
+.btn {
+  background-color: lightblue;
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  margin: 4px 2px;
+  border-radius: 50%;
+}
