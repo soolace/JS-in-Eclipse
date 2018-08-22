@@ -6,7 +6,7 @@ function showMessage() {
 	document.getElementById("hiddenMessage").style.display = 'block';
 }
 
-var showValue = function(val){
+var showValue = function(val){ 
     document.getElementById('pressed').value = parseInt(val);
 }
 
