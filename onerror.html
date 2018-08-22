@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>onerror, where is the mistake?</title>
+<script>
+function fehlerbehandlung(fehler, datei, zeile){
+	alert("Fehler: " + fehler + "\nDatei: " + datei + "\nZeile: " +zeile);
+}
+</script>
+
+</head>
+<body>
+
+<script>
+
+window.onerror = fehlerbehandlung;
+
+var y = 42; 
+document.write(x + "<br>");
+document.write(y + "<br>");
+
+
+</script>
+</body>
+</html>
+
