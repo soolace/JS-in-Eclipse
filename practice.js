@@ -2,10 +2,10 @@
  * practice
  */
 var animal = {
-		eats : true
+	eats : true
 };
 
-function Rabbit(name){
+function Rabbit(name) {
 	this.name = name;
 }
 
