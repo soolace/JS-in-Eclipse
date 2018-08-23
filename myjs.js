@@ -6,6 +6,10 @@ function showMessage() {
 	document.getElementById("hiddenMessage").style.display = 'block';
 }
 
+function hideMessage() {
+	document.getElementById("hideMessage").style.display = 'block'("hiddenMessage");
+}
+
 var showValue = function(val){ 
     document.getElementById('pressed').value = parseInt(val);
 }

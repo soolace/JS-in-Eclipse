@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>practice</title>
+<script>
+	function Motor(p, c, f) {	//constructor-function for the Motor
+		this.performance = p;
+		this.cylinder = c;
+		this.fuel = f;
+		this.tuning = motorTuning;	//gets the other function
+		this.toString = motorOutput; //to String for the output
+	}
+
+	function motorTuning(x) {
+		this.performance += x;
+	}
+	function motorOutput() { //return function
+		return "Performance: " + this.performance + ", Cylinder: "
+				+ this.cylinder + ", Fuel: " + this.fuel;
+	}
+
+	function Car(co, s, d) { //constructor-function for the Car
+		this.color = co;
+		this.speed = s;
+		this.drive = d;
+		this.toString = carOutput; //to String for the output
+	}
+
+	function carOutput() { //return function
+		return "Color: " + this.color + ", Speed: " + this.speed + ", Drive: "
+				+ this.drive;
+	}
+	
+	function Truck(co, s, pa){
+		this.constructor(co, s);
+		this.payload = pa;
+		this.load = truckLoaded;
+		this.toString = truckOutput;
+	}
+	function truckLoaded(value){
+		this.payload += value;
+	}
+	function truckOutput(){
+		return "Color: " + this.color + ", Speed: " + this.speed + ", Payload: "
+			+ this.payload;
+	}
+	Truck.prototype = new Car();
+	
+</script>
+</head>
+<body>
+	<script>
+		var porsche = new Car("black", "200", new Motor(120, 4, "petrol")); //new Object is created, with the parameter of functions
+		porsche.drive.tuning(20);
+		document.write(porsche + "<br>"); //gives the output to the screen
+
+		porsche.drive.performance = 240; //changes of the car
+		porsche.drive.cylinder = 6;
+		porsche.drive.fuel = "Diesel";
+		document.write(porsche + "<br>"); //gives the changes out of the screen
+		
+		var MAN = new Truck("Orange", 30, 15);
+		document.write(MAN + "<br>");
+
+		MAN.speed(50);
+		MAN.load(25);
+		document.write(MAN + "<br>");
+		
+		
+	</script>
+</body>
+</html>

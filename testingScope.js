@@ -2,21 +2,21 @@
  * testing and learning, what is scope
  */
 
-var global = "this is a global variable";
-var anotherGlobal = "this is also a global variable";
+var global = "global variable";
+var anotherGlobal ="another global variable";
 
 function functionScope () {
 
-    var global = "this is the function scope";
+    var global = "function1";
     console.log(global)
-    var scoped = "this is also a function scope";
+    var scoped = "function2";
 
-    function inner () {
+    function innerScope () {
         console.log(scoped);
         console.log(anotherGlobal);
     }
 
-    inner();
+    innerScope();
 
 }
 
@@ -25,5 +25,5 @@ console.log(global);
 console.log(anotherGlobal);
 
 
+
 functionScope();
-inner(); 
