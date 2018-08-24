@@ -2,20 +2,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>JSON</title>
+<title>JSON - simple array example with parse</title>
 </head>
 <p id="json-demo"></p>
 
 <script>
-	var car = '{"cars":[' + '{"brand":"Porsche", "model":"Carrera"},'
-			+ '{"brand":Dodge", "model":"Hellcat"},'
-			+ '{"brand":Chevrolet", "model":"Camaro"}]}';
+	// this example shows an array in a String
 
-	obj = JSON.parse(car);
-	document.getElementById("json-demo").innerHTML = obj.cars[1].brand + " "
-			+ obj.car[1].model;
-	
-	
+	var car = '{"cars":[' + '{"brand":"Porsche","model":"Carrera" },'
+			+ '{"brand":"Dodge","model":"Hellcat" },'
+			+ '{"brand":"Chevrolet","model":"Camaro" }]}';
+			
+
+			obj = JSON.parse(car);
+
+	var arrayLength = car.length;
+	for (var i = 0; i < arrayLength; i++) {
+		document.write(obj.cars[i].brand +" "+ obj.cars[i].model + "<br>");
+
+	}
+
 </script>
 </body>
 </html>
