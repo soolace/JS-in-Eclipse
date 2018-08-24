@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSON</title>
+</head>
+<p id="json-demo"></p>
+
+<script>
+	var car = '{"cars":[' + '{"brand":"Porsche", "model":"Carrera"},'
+			+ '{"brand":Dodge", "model":"Hellcat"},'
+			+ '{"brand":Chevrolet", "model":"Camaro"}]}';
+
+	obj = JSON.parse(car);
+	document.getElementById("json-demo").innerHTML = obj.cars[1].brand + " "
+			+ obj.car[1].model;
+	
+	
+</script>
+</body>
+</html>

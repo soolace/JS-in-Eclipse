@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Objects and JSON stringify</title>
+<script>
+	function Motor(p, c, f) { //constructor-function for the Motor
+		this.performance = p; //leistung
+		this.cylinder = c;
+		this.fuel = f;
+		this.tuning = motorTuning; //gets the other function
+		this.toString = motorOutput; //to String for the output
+	}
+
+	function motorTuning(x) {
+		this.performance += x;
+	}
+	function motorOutput() { //return function
+		return "Performance: " + this.performance + ", Cylinder: "
+				+ this.cylinder + ", Fuel: " + this.fuel;
+	}
+
+	function Car(co, s, mo) { //constructor-function for the Car
+		this.color = co;
+		this.speed = s;
+		this.motor = mo;
+		this.toString = carOutput; //to String for the output
+	}
+
+	function carOutput() { //return function
+		return "Color: " + this.color + ", Speed: " + this.speed + ", Motor: "
+				+ this.motor;
+	}
+
+	function Truck(co, s, mo, pa) { //new Function, Truck
+		this.constructor(co, s, mo);
+		this.payload = pa;
+		this.load = truckLoaded;
+		this.toString = truckOutput;
+		this.toString = carOutput;
+	}
+	function truckLoaded(value) { //tuning the loading
+		this.payload += value;
+	}
+	function truckOutput() { //output
+		return "Color: " + this.color + ", Speed: " + this.speed
+				+ ", Payload: " + this.payload;
+	}
+	Truck.prototype = new Car(); //prototype car is the basis for the truck
+</script>
+</head>
+<body>
+	<script>
+		var porsche = new Car("black", "200", new Motor(120, 4, "Petrol")); //new Object is created, with the parameter of functions
+		porsche.motor.tuning(20);
+		document.write("1. Function Car, with function Motor, includes the function tuning:"+"</br>");
+		document.write(porsche + "<br>"+"</br>"+"</br>"); //gives the output to the screen
+
+		porsche.motor.performance = 240; //changes of the car
+		porsche.motor.cylinder = 6;
+		porsche.motor.fuel = "Diesel";
+		document.write("2. Function Car, with function Motor, includes the function tuning, which changes the values of the function Motor:"+"</br>");
+		document.write(porsche + "<br>" +"</br>"+"</br>"); //gives the changes out of the screen
+		
+		var zKettePorsche = JSON.stringify(porsche); //String JSON
+		document.write("3. Porsche in a String, with Stringify: " + "<br>" +zKettePorsche + "<br>"+"</br>"+"</br>");
+		
+		var man = new Truck("yellow", 30, new Motor(50, 4, "Petrol") ,15); //truck object
+		document.write("4. Function Truck, with prototype Car:"+"</br>");
+		document.write(man + "<br>"+"</br>"+"</br>");
+		
+		man.load(25); //changes the truck object
+		document.write("5. Function Truck, with prototype Car and the change of the value:"+"</br>");
+		document.write(man + "<br>"+"</br>"+"</br>");
+		
+		var zKetteTruck = JSON.stringify(man); //String JSON
+		document.write("6. Truck in a String, with Stringify: " + "<br>" +zKetteTruck + "<br>");
+	
+		
+		
+	
+	</script>
+</body>
+</html>
