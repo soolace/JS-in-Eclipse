@@ -1,35 +1,31 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>document object model</title>
+<title>creating tables, easy example</title>
+<script type="text/javascript">
+	function aboveFrames() {
+		document.getElementById('myTable').frame = "above";
+	}
+	function belowFrames() {
+		document.getElementById('myTable').frame = "below";
+	}
+</script>
 </head>
 <body>
-	<p id="a1">
-		Das <i>ist</i> ein Absatz <b>mit</b> Markierungen
-	</p>
 
-	<script>
-		var absatz = document.getElementById("a1");
-		document.write("Hat Kinder: " + absatz.hasChildNodes() + "<br>");
-		document.write("Anzahl Kinder: " + absatz.childNodes.length
-				+ "<br><br>");
+	<table id="myTable">
+		<tr>
+			<td>100</td>
+			<td>200</td>
+		</tr>
+		<tr>
+			<td>300</td>
+			<td>400</td>
+		</tr>
+	</table>
+	<br />
+	<input type="button" onclick="aboveFrames()" value="Rahmen oben">
+	<input type="button" onclick="belowFrames()" value="Rahmen unten">
 
-		for (var i = 0; i < absatz.childNodes.length; i++) {
-			if (absatz.childNodes[1].nodeType == 3)
-				document.write("Kind: " + i + ": Typ=Text, Wert: "
-						+ absatz.childNodes[1].nodeValue + "<br>");
-
-			else if (absatz.childNodes[1].nodeType == 1)
-				document.write("Kind " + 1 + ": Typ-Element, Name: "
-						+ absatz.childNodes[1].nodename + "<br>");
-		}
-		document.write("<br>Erstes Kind: " + absatz.firstChild.nodeValue
-				+ "<br>");
-		document.write("<br>Letztes Kind: " + absatz.lastChild.nodeValue
-				+ "<br>");
-		document.write("<br>Kind 1, erstes Kind: "
-				+ absatz.childNodes[1].firstChild.nodeValue);
-	</script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add or delete Elements from an Array</title>
+</head>
+<body>
+	
+	<script>
+	//different ways to change or add or delete elements in an array:
+	var cityArray = new Array ("Rom", "Moscow");
+	document.write("Array: " + cityArray + "<br><br>");
+	
+	//adds an element at the end
+	cityArray.push("Vienna", "Paris");
+	document.write("push: " + cityArray + "<br><br>");
+	
+	//delete an element at the end
+	var city = cityArray.pop();
+	document.write("pop: " + cityArray + "<br>");
+	document.write("removed: " + city + "<br><br>");
+	
+	//adds an element at the beginning
+	cityArray.unshift("Madrid", "London");
+	document.write("unshift: " + cityArray + "<br>");
+	
+	//delete an element at the beginning
+	city = cityArray.shift();
+	document.write("shift: " + cityArray + "<br>");
+	document.write("removed: " + city + "<br><br>");
+	
+	//can remove or add an element somewhere in the text
+	cityArray.splice(2, 1, "Prag", "Sofia");
+	document.write("splice for adding: " + cityArray + "<br>");
+	
+	cityArray.splice(1, 2);			// first parameter: which position deleting begins, the second parameter says, how many elements should be deleted. 
+									//third paramter will add a new element
+	document.write("splice zum löschen: " + cityArray + "<br><br>");
+	
+	delete cityArray[1];		//delete doesnt delete the whole element, because of that, better us splice. 
+	document.write("delete: " + cityArray);
+	
+	</script>
+
+</body>
+</html>

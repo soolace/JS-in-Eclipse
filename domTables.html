@@ -1,0 +1,33 @@
+<html>
+<head>
+<script type="text/javascript">
+	function insRow() {
+		var x = document.getElementById('myTable').insertRow(0);
+		var y = x.insertCell(0);
+		var z = x.insertCell(1);
+		y.innerHTML = "new Cell";
+		z.innerHTML = "new Line";
+	}
+</script>
+</head>
+
+<body>
+	<table id="myTable" border="1">
+		<tr>
+			<td>Li ne 1 Cell 1</td>
+			<td>Line 1 Cell 2</td>
+		</tr>
+		<tr>
+			<td>Line 2 Cell 1</td>
+			<td>Line 2 Cell 2</td>
+		</tr>
+		<tr>
+			<td>Line 3 Cell 1</td>
+			<td>Line 3 Cell 2</td>
+		</tr>
+	</table>
+	<br />
+	<input type="button" onclick="insRow()" value="create a new line">
+
+</body>
+</html>
