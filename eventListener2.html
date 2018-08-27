@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>event Listener with getElementByid</title>
+<script>
+//alert, when the picture is clicked, you can see all informations of the picture, same with de input field
+	function pressed(e) {
+
+		var quelle;
+
+		if (window.event) {
+			e = window.event;
+			quelle = window.event.srcElement;
+		} else
+			quelle = e.target;
+
+		var output = "Quelle: " + quelle + "\n" + "ID: " + quelle.id + "\n"
+				+ "Ereignis :" + e.type + "\n" + "Taste: " + e.keyCode + "\n"
+				+ "Strg: " + e.ctrlKey + ", Shift: " + e.shiftKey + ", Alt: "
+				+ e.altKey + "\n" + ", y: " + e.screenY + "\n\n";
+		alert(output);
+	}
+</script>
+</head>
+<body>
+	<p>
+		<img id="idBild" src="WebContent/beach.jpg" alt="Paradies">
+	</p>
+	<p>
+		<input id="idInput"> Input
+	</p>
+	<script>
+		document.getElementById("idBild").onclick = pressed;
+		document.getElementById("idInput").onkeydown = pressed;
+	</script>
+</body>
+</html>

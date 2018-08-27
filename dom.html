@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>document object model</title>
+</head>
+<body>
+	<p id="a1">
+		Das <i>ist</i> ein Absatz <b>mit</b> Markierungen
+	</p>
+
+	<script>
+		var absatz = document.getElementById("a1");
+		document.write("Hat Kinder: " + absatz.hasChildNodes() + "<br>");
+		document.write("Anzahl Kinder: " + absatz.childNodes.length
+				+ "<br><br>");
+
+		for (var i = 0; i < absatz.childNodes.length; i++) {
+			if (absatz.childNodes[1].nodeType == 3)
+				document.write("Kind: " + i + ": Typ=Text, Wert: "
+						+ absatz.childNodes[1].nodeValue + "<br>");
+
+			else if (absatz.childNodes[1].nodeType == 1)
+				document.write("Kind " + 1 + ": Typ-Element, Name: "
+						+ absatz.childNodes[1].nodename + "<br>");
+		}
+		document.write("<br>Erstes Kind: " + absatz.firstChild.nodeValue
+				+ "<br>");
+		document.write("<br>Letztes Kind: " + absatz.lastChild.nodeValue
+				+ "<br>");
+		document.write("<br>Kind 1, erstes Kind: "
+				+ absatz.childNodes[1].firstChild.nodeValue);
+	</script>
+</body>
+</html>

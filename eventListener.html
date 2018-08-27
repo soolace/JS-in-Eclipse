@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>first EventListener</title>
+<script>
+	function loaded() {
+		alert("Document is loaded");
+	}
+	function clicked(description) {
+		alert("clicked - " + description);
+		document.write("this is your number");
+	}
+	function neww() {
+		document.open();
+		document.write("<!DOCTYPE html><html><head>"
+				+ "<meta charset='utf-8'><title>Neu</title></head>"
+				+ "<body>new document</body></html>");
+		document.close();
+	}
+</script>
+</head>
+<body onload="loaded();">
+	<p>
+		<input type="button" value="Click 1" onclick="clicked('Click 1');">
+		<input type="button" value="Click 2" onclick="clicked('this.value');">
+		<input type="button" value="new Document" onclick="neww();">
+	</p>
+
+	<p>
+		<a href="javascript:clicked('Hyperlink');">here is a Hyperlink</a>
+	</p>
+	<script>
+		
+	</script>
+</body>
+</html>
