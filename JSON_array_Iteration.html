@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSON - array example with parse and Iteration, innerHTML</title>
+</head>
+<body>
+
+	<!-- second example, create a Table with an JSON-Array -->
+	<table id="json-demo" border="1">
+		<tr>
+			<th>Brand</th>
+			<th>Model</th>
+		</tr>
+
+	</table>
+
+</body>
+
+<script>
+	// this example shows an array in a String
+	var car = '{"cars":[' + '{"brand":"Porsche","model":"Carrera" },'
+			+ '{"brand":"Dodge","model":"Hellcat" },'
+			+ '{"brand":"Chevrolet","model":"Camaro" }]}';
+	
+
+	obj = JSON.parse(car);
+	var arrayLength = obj.cars.length;
+	allLines = '<tr><th>Brand</th><th>Model</th></tr>';
+	for (var i = 0; i < arrayLength; i++) {
+		var lineI = '<tr><td>' + obj.cars[i].brand + '</td>' + '<td>'
+				+ obj.cars[i].model + '</td></tr>';
+		var temp = allLines + lineI;
+		allLines = temp;
+		console.log("ergebnis: " + lineI);
+
+	}
+	document.getElementById("json-demo").innerHTML = allLines;
+</script>
+
+</html>

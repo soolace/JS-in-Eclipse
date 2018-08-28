@@ -10,7 +10,20 @@
 </script>
 </head>
 <body>
-
-
+<p id="json-demo"></p>
 </body>
+<script>
+	// this example shows an array in a String
+	var car = '{"cars":[' + '{"brand":"Porsche","model":"Carrera" },'
+			+ '{"brand":"Dodge","model":"Hellcat" },'
+			+ '{"brand":"Chevrolet","model":"Camaro" }]}';
+
+	obj = JSON.parse(car);
+
+	var arrayLength = obj.cars.length;
+	for (var i = 0; i < arrayLength; i++) {
+		document.write(obj.cars[i].brand + " " + obj.cars[i].model + "<br>");
+	}
+	</script>
+
 </html>
