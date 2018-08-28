@@ -4,16 +4,20 @@
 <meta charset="ISO-8859-1">
 <title>JSON - array example with parse and Iteration, innerHTML</title>
 </head>
-<body>
+<body onload="showList()">
 
 	<!-- second example, create a Table with an JSON-Array -->
-	<table id="json-demo" border="1">
-		<tr>
-			<th>Brand</th>
-			<th>Model</th>
-		</tr>
-
+	<table id="toShow" border="1">
 	</table>
+
+	<br>
+	<div>
+		<p>add your favourite car:</p>
+		Brand: <input type="text" name="textFieldBrand" id="textFieldBrand"
+			value=""> Model: <input type="text" name="textFieldModel"
+			id="textFieldModel" value=""> <input type="button"
+			id="button1" value="add your car" onclick="addCar()">
+	</div>
 
 </body>
 
@@ -22,20 +26,40 @@
 	var car = '{"cars":[' + '{"brand":"Porsche","model":"Carrera" },'
 			+ '{"brand":"Dodge","model":"Hellcat" },'
 			+ '{"brand":"Chevrolet","model":"Camaro" }]}';
-	
+			
+			let obj = JSON.parse(car);
 
-	obj = JSON.parse(car);
-	var arrayLength = obj.cars.length;
-	allLines = '<tr><th>Brand</th><th>Model</th></tr>';
-	for (var i = 0; i < arrayLength; i++) {
-		var lineI = '<tr><td>' + obj.cars[i].brand + '</td>' + '<td>'
-				+ obj.cars[i].model + '</td></tr>';
-		var temp = allLines + lineI;
-		allLines = temp;
-		console.log("ergebnis: " + lineI);
+	function createStringTable() {
+		//creating tables and puts in the objects, same procedure like the first example
+		
+		var arrayLength = obj.cars.length; //it is also possible without creating a variable. only obj.cars.length
+		allLines = '<tr><th>Brand</th><th>Model</th></tr>';
+		for (var i = 0; i < arrayLength; i++) {
+			var lineI = '<tr><td>' + obj.cars[i].brand + '</td>' + '<td>'
+					+ obj.cars[i].model + '</td></tr>';
+			var temp = allLines + lineI;
+			allLines = temp;
+			console.log("ergebnis: " + lineI);
+
+		}
+		return allLines;
+		
+	}
+
+	function addCar() {
+		var brandValue = document.getElementById("textFieldBrand").value;
+		var modelValue = document.getElementById("textFieldModel").value;
+		obj.cars.push({
+			brand : brandValue,
+			model : modelValue
+		});
 
 	}
-	document.getElementById("json-demo").innerHTML = allLines;
+
+	function showList() {
+		var allLines = createStringTable();
+		document.getElementById("toShow").innerHTML = allLines;
+	}
 </script>
 
 </html>

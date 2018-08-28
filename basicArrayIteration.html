@@ -2,29 +2,66 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Basic Array Iteration</title>
+<title>Basic Array Iteration with input Textfields</title>
 </head>
-<body>
+<!-- when the page is new loaded, the function showList will be called -->
+<body onload="showList()">
 	<!-- Table for the first example, creating a table with an array -->
 	<table id="toShow" border="1">
 	</table>
 
+	<br>
+	<div>
+		<!-- inputfield and button to add a new Element to the list. it calls the functions -->
+		<p>Add a new Name to the list:</p>
+		<input type="text" name="inputField1" id="inputField1" value="">
+		<input type="button" id="button1" value="add"
+			onclick="doAddandClear()">
+	</div>
+
 </body>
 
 <script>
-	//example of creating a table with an array. var temp = save the data temporary and add the next. 
-	var listName = [ "Marion", "Isabel", "Julia", "Jana", "Viktoria", "Igor", "Nikita", "Vanja" ];
-	var allLines = "";
+	//array list with one element
+	var listName = [ "Marion", "Isabel", "Julia", "Jana", "Viktoria", "Igor",
+			"Nikita" ];
 
-	for (var i = 0; i < listName.length; i++) {
-		var linei = '<tr><td>Hello, ' + listName[i] + '</td></tr>';
-		var temp = allLines + linei; //adds the next object in the array to the saved one
-		allLines = temp;
-		console.log("ergebnis: " + linei);
+	//example of creating a table with an array. var temp = save the data temporary and add the next. 
+	function createStringTable() {
+		var allLines = '<tr><th>Firstname</th></tr>';
+		for (var i = 0; i < listName.length; i++) {
+			var linei = '<tr><td>' + listName[i] + '</td></tr>';
+			var temp = allLines + linei; //adds the next object in the array to the saved one
+			allLines = temp;
+		}
+		return allLines; //we need the return, because our variable allLines is local and we need it again in the function showList(). 
 
 	}
 
-	document.getElementById("toShow").innerHTML = allLines; //allLines, that all of the Object will be in the list
-	
+	// add new names, push is, that the element will be at the end of the arraylist
+	function addName() {
+		var getValue = document.getElementById("inputField1").value;
+		console.log(getValue);
+		listName.push(getValue);
+		showList();
+
+	}
+
+	//refresh the table and show the new input
+	function showList() {
+		var allLines = createStringTable(); // with this var allLines, we call the return from the function
+		document.getElementById("toShow").innerHTML = allLines;
+	}
+
+	//function to clear the textfield
+	function clearField() {
+		document.getElementById('inputField1').value = '';
+	}
+
+	//that we can call two functions with one click to the button, they are together in one action function.
+	function doAddandClear() {
+		addName();
+		clearField();
+	}
 </script>
 </html>
