@@ -9,7 +9,7 @@
 	<h3>a dynamic table with elements, which are in a JSON Array</h3>
 
 	<!-- second example, create a Table with an JSON-Array -->
-	<table id="toShow" border="1">
+	<table id="toShow" border="1">	<!-- contenteditable="true", with this, the html field is editable -->
 	</table>
 
 	<br>
@@ -20,7 +20,12 @@
 			value=""> Model: <input type="text" name="textFieldModel"
 			id="textFieldModel" value=""> <input type="button"
 			id="button1" value="add your car" onclick="doAddandClear()">
+		<input type="button" id="deleteButton" value="delete last input"
+			onclick="deleteCar()">
 	</div>
+
+	<br>
+	<h4 id="hiddenMessage" value=""></h4>
 
 </body>
 
@@ -37,8 +42,11 @@
 		var arrayLength = obj.cars.length;
 		allLines = '<tr><th>Brand</th><th>Model</th></tr>';
 		for (var i = 0; i < arrayLength; i++) {
-			var lineI = '<tr><td>' + obj.cars[i].brand + '</td>' + '<td>'
-					+ obj.cars[i].model + '</td></tr>';
+			var rowId = "row_" + i;
+			var lineI = '<tr id='+ rowId
+					+ ' onmouseover="mouseOver(this.id);" onmouseout="mouseOut(this.id);" onclick="openEdit(this.id)"><td>'
+					+ obj.cars[i].brand + '</td><td>' + obj.cars[i].model
+					+ '</td></tr>';
 			var temp = allLines + lineI;
 			allLines = temp;
 
@@ -58,6 +66,22 @@
 		showList();
 
 	}
+	
+	//editable
+	function openEdit(id){
+		alert("id=" + id)
+		var editBrand = document.getElementById(id).value;
+		var editModel = document.getElementById(id);
+		document.getElementById("textFieldBrand").value ="editBrand";
+		document.getElementById("textFieldModel").value ="editModel";
+		console.log("infos:" +document.getElementById(id));
+	
+	}
+
+	function deleteCar() {
+		obj.cars.pop();
+		showList();
+	}
 
 	//calls the function createStringTable and shows the table and refresh
 	function showList() {
@@ -75,7 +99,34 @@
 	function doAddandClear() {
 		addCar();
 		clearField();
+		showText();
 	}
+	
+
+	//to change the background color when the mouse is over the element
+	function changeBg() {
+		//document.body.style.backgroundColor = "red"; //this changes the whole background
+		document.getElementById("toShow").style.backgroundColor = "#06EEF9";
+
+	}
+	//shows a text, when the car is added
+	function showText() {
+		document.getElementById("hiddenMessage").innerHTML = "THANKS FOR YOUR INPUT!";
+		document.getElementById("hiddenMessage").style.color = "magenta";
+	}
+
+	//changes the coler of the actual row, where the mouse is
+	function mouseOver(id) {
+		document.getElementById(id).style.backgroundColor = "#06EEF9";
+	}
+	//goes back to white, when the mouse is out of the row
+	function mouseOut(id) {
+		document.getElementById(id).style.backgroundColor = "#FFFFFF";
+	}
+	
+	
+	
+	
 </script>
 
 </html>
