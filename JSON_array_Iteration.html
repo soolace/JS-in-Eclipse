@@ -6,46 +6,48 @@
 </head>
 <body onload="showList()">
 
+	<h3>a dynamic table with elements, which are in a JSON Array</h3>
+
 	<!-- second example, create a Table with an JSON-Array -->
 	<table id="toShow" border="1">
 	</table>
 
 	<br>
 	<div>
+		<!-- textfields and buttons for adding elemetns -->
 		<p>add your favourite car:</p>
 		Brand: <input type="text" name="textFieldBrand" id="textFieldBrand"
 			value=""> Model: <input type="text" name="textFieldModel"
 			id="textFieldModel" value=""> <input type="button"
-			id="button1" value="add your car" onclick="addCar()">
+			id="button1" value="add your car" onclick="doAddandClear()">
 	</div>
 
 </body>
 
 <script>
 	// this example shows an array in a String
-	var car = '{"cars":[' + '{"brand":"Porsche","model":"Carrera" },'
+	var car = '{"cars":[{"brand":"Porsche","model":"Carrera" },'
 			+ '{"brand":"Dodge","model":"Hellcat" },'
 			+ '{"brand":"Chevrolet","model":"Camaro" }]}';
-			
-			let obj = JSON.parse(car);
 
+	let obj = JSON.parse(car);
+
+	//creating tables and puts in the objects, same procedure like the first example
 	function createStringTable() {
-		//creating tables and puts in the objects, same procedure like the first example
-		
-		var arrayLength = obj.cars.length; //it is also possible without creating a variable. only obj.cars.length
+		var arrayLength = obj.cars.length;
 		allLines = '<tr><th>Brand</th><th>Model</th></tr>';
 		for (var i = 0; i < arrayLength; i++) {
 			var lineI = '<tr><td>' + obj.cars[i].brand + '</td>' + '<td>'
 					+ obj.cars[i].model + '</td></tr>';
 			var temp = allLines + lineI;
 			allLines = temp;
-			console.log("ergebnis: " + lineI);
 
 		}
-		return allLines;
-		
+		return allLines; //return allLines, because its in a function and we need it in another function
+
 	}
 
+	//add a new car, with push and the definition, which field is for which element
 	function addCar() {
 		var brandValue = document.getElementById("textFieldBrand").value;
 		var modelValue = document.getElementById("textFieldModel").value;
@@ -53,12 +55,26 @@
 			brand : brandValue,
 			model : modelValue
 		});
+		showList();
 
 	}
 
+	//calls the function createStringTable and shows the table and refresh
 	function showList() {
 		var allLines = createStringTable();
 		document.getElementById("toShow").innerHTML = allLines;
+	}
+
+	//function to clear the input fields
+	function clearField() {
+		document.getElementById("textFieldBrand").value = '';
+		document.getElementById("textFieldModel").value = '';
+	}
+
+	//function to call both functions with one click
+	function doAddandClear() {
+		addCar();
+		clearField();
 	}
 </script>
 
