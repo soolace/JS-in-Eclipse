@@ -4,28 +4,37 @@
 <meta charset="ISO-8859-1">
 <title>JSON - array example with parse and Iteration, innerHTML</title>
 </head>
-<body onload="showList()">
+<body onload="showList(); hideButton()">
 
 	<h3>a dynamic table with elements, which are in a JSON Array</h3>
 
 	<!-- second example, create a Table with an JSON-Array -->
-	<table id="toShow" border="1">	<!-- contenteditable="true", with this, the html field is editable -->
+	<table id="toShow" border="1">
+		<!-- contenteditable="true", with this, the html field is editable -->
 	</table>
 
 	<br>
 	<div>
-		<!-- textfields and buttons for adding elemetns -->
-		<p>add your favourite car:</p>
+		<br> <input type="button" id="deleteButton"
+			value="delete last input" onclick="deleteCar()"> <br>
+		<h4>add your favourite car:</h4>
 		Brand: <input type="text" name="textFieldBrand" id="textFieldBrand"
 			value=""> Model: <input type="text" name="textFieldModel"
-			id="textFieldModel" value=""> <input type="button"
+			id="textFieldModel" value=""> <br>
+			<br>
+			<input type="button" id="editButton" value="Edit your car" style.display="none" onclick="editButton()">
+			<br>
+			<input type="button"
 			id="button1" value="add your car" onclick="doAddandClear()">
-		<input type="button" id="deleteButton" value="delete last input"
-			onclick="deleteCar()">
+		
+
+
 	</div>
+
 
 	<br>
 	<h4 id="hiddenMessage" value=""></h4>
+
 
 </body>
 
@@ -43,8 +52,9 @@
 		allLines = '<tr><th>Brand</th><th>Model</th></tr>';
 		for (var i = 0; i < arrayLength; i++) {
 			var rowId = "row_" + i;
-			var lineI = '<tr id='+ rowId
-					+ ' onmouseover="mouseOver(this.id);" onmouseout="mouseOut(this.id);"><td>'
+			var lineI = '<tr id='
+					+ rowId
+					+ ' onmouseover="mouseOver(this.id);" onmouseout="mouseOut(this.id);" onclick="checkChilds(this.id)"><td>'
 					+ obj.cars[i].brand + '</td><td>' + obj.cars[i].model
 					+ '</td></tr>';
 			var temp = allLines + lineI;
@@ -66,7 +76,42 @@
 		showList();
 
 	}
-	
+
+	//check the children and get the nodeValue
+	function checkChilds(rowId) {
+		var rowNode = document.getElementById(rowId);
+		var hasChild = rowNode.hasChildNodes(); //has it children? 
+
+		if (hasChild) {
+			console.log("how many: " + rowNode.childNodes.length); //how  many child are next
+			let listTds = rowNode.childNodes;
+			let tdBrand = listTds[0];
+			let tdModel = listTds[1];
+			var valueBrand = tdBrand.childNodes[0].nodeValue; //gets the value from the text-Element under the last Child
+			var valueModel = tdModel.childNodes[0].nodeValue;
+			setFields(valueBrand, valueModel); //calls the function and sets the values
+			showButton();
+		}
+	}
+
+	//function to get a console log when the value is 1 or 3
+	function showNodeInfo(node) {
+		if (node.nodeType == 1) {
+			console.log("Type = HTML-Element, Wert: " + node.nodeValue
+					+ ", Name: " + node.nodeName);
+		} else if (node.nodeType == 3) {
+			console.log("Typ-Text, Name: " + node.nodeValue + ", Name: "
+					+ node.nodeName);
+		}
+
+	}
+
+	//here, the value from the node will put in the textFields
+	function setFields(valueBrand, valueModel) {
+		document.getElementById("textFieldBrand").value = valueBrand;
+		document.getElementById("textFieldModel").value = valueModel;
+	}
+
 	//function to delete the last element
 	function deleteCar() {
 		obj.cars.pop();
@@ -91,7 +136,6 @@
 		clearField();
 		showText();
 	}
-	
 
 	//to change the background color when the mouse is over the element
 	function changeBg() {
@@ -114,8 +158,25 @@
 		document.getElementById(id).style.backgroundColor = "#FFFFFF";
 	}
 	
+	function hideButton(){
+		  document.getElementById("editButton").style.display='none';
+
+		}
+
+	function showButton() {
+		document.getElementById("editButton").style.display = 'block';
+	}
 	
-	
+	function editButton(){
+		var brandValue = document.getElementById("textFieldBrand").value;
+		var modelValue = document.getElementById("textFieldModel").value;
+		obj.cars.push({
+			brand : brandValue,
+			model : modelValue
+		});
+		showList();
+
+	}
 	
 </script>
 
