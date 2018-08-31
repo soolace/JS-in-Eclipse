@@ -3,8 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>JSON - array example with parse and Iteration, innerHTML</title>
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
-<body onload="showList(); hideButton()">
+<body onload="showList(); hideButton(); hideText()">
 
 	<h3>a dynamic table with elements, which are in a JSON Array</h3>
 
@@ -17,16 +18,20 @@
 	<div>
 		<br> <input type="button" id="deleteButton"
 			value="delete last input" onclick="deleteCar()"> <br>
-		<h4>add your favourite car:</h4>
+		<h4>add or edit your favourite car:</h4>
 		Brand: <input type="text" name="textFieldBrand" id="textFieldBrand"
 			value=""> Model: <input type="text" name="textFieldModel"
-			id="textFieldModel" value=""> <br>
-			<br>
-			<input type="button" id="editButton" value="Edit your car" style.display="none" onclick="editButton()">
-			<br>
-			<input type="button"
-			id="button1" value="add your car" onclick="doAddandClear()">
-		
+			id="textFieldModel" value=""> <br> <br>
+		<h4>your old Car, change it below and click on the field with the
+			car</h4>
+		Brand: <input type="text" name="showTextBrand" id="showTextBrand"
+			value="" readonly> Model: <input type="text"
+			name="showTextModel" id="showTextModel" value="" readonly><br>
+		<br> <input type="button" id="editButton" value="Edit your car"
+			style.display="none" onclick="editandClear()"> <br> <input
+			type="button" id="button1" value="add your car"
+			onclick="doAddandClear()">
+
 
 
 	</div>
@@ -91,6 +96,7 @@
 			var valueModel = tdModel.childNodes[0].nodeValue;
 			setFields(valueBrand, valueModel); //calls the function and sets the values
 			showButton();
+			showText();
 		}
 	}
 
@@ -108,6 +114,8 @@
 
 	//here, the value from the node will put in the textFields
 	function setFields(valueBrand, valueModel) {
+		document.getElementById("showTextBrand").value = valueBrand;
+		document.getElementById("showTextModel").value = valueModel;
 		document.getElementById("textFieldBrand").value = valueBrand;
 		document.getElementById("textFieldModel").value = valueModel;
 	}
@@ -130,11 +138,16 @@
 		document.getElementById("textFieldModel").value = '';
 	}
 
-	//function to call both functions with one click
+	//functions to call both functions with one click
 	function doAddandClear() {
 		addCar();
 		clearField();
-		showText();
+		showTextPink();
+	}
+
+	function editandClear() {
+		editButton();
+		clearField();
 	}
 
 	//to change the background color when the mouse is over the element
@@ -144,7 +157,7 @@
 
 	}
 	//shows a text, when the car is added
-	function showText() {
+	function showTextPink() {
 		document.getElementById("hiddenMessage").innerHTML = "THANKS FOR YOUR INPUT!";
 		document.getElementById("hiddenMessage").style.color = "magenta";
 	}
@@ -157,27 +170,66 @@
 	function mouseOut(id) {
 		document.getElementById(id).style.backgroundColor = "#FFFFFF";
 	}
-	
-	function hideButton(){
-		  document.getElementById("editButton").style.display='none';
 
-		}
+	//hide or show functions
+	function hideButton() {
+		document.getElementById("editButton").style.display = 'none';
+
+	}
 
 	function showButton() {
 		document.getElementById("editButton").style.display = 'block';
 	}
-	
-	function editButton(){
-		var brandValue = document.getElementById("textFieldBrand").value;
-		var modelValue = document.getElementById("textFieldModel").value;
-		obj.cars.push({
-			brand : brandValue,
-			model : modelValue
-		});
-		showList();
 
+	function hideText() {
+		document.getElementById("showTextBrand").style.display = 'none';
+		document.getElementById("showTextModel").style.display = 'none';
 	}
-	
+
+	function showText() {
+		document.getElementById("showTextBrand").style.display = 'block';
+		document.getElementById("showTextModel").style.display = 'block';
+	}
+
+	// edit the value in the textfields and replace the old one from the arrayList
+	function editButton() {
+		var brandOldValue = document.getElementById("showTextBrand").value;
+		var modelOldValue = document.getElementById("showTextModel").value;
+		var brandNewValue = document.getElementById("textFieldBrand").value;
+		var modelNewValue = document.getElementById("textFieldModel").value;
+		var oldCar = {
+			brand : brandOldValue,
+			model : modelOldValue
+		};
+		var newCar = {
+			brand : brandNewValue,
+			model : modelNewValue
+		};
+		var numberOfCars = obj.cars.length; //looks for the field with the same value
+		for (var i = 0; i < numberOfCars; i++) {
+			var carFromArray = obj.cars[i];
+			var resultOfEqual = isEqual(oldCar, carFromArray);
+			if (resultOfEqual) {
+				var foundedIndex = i;
+				obj.cars[foundedIndex] = newCar; //replaces the old field with the new value
+			}
+		}
+		showList();
+	}
+
+	//are the two cars equal-function
+	function isEqual(car1, car2) {
+		brandCar1 = car1.brand;
+		brandCar2 = car2.brand;
+		modelCar1 = car1.model;
+		modelCar2 = car2.model;
+		var isEqual = false;
+
+		if ((brandCar1 == brandCar2) && (modelCar1 == modelCar2)) {
+			isEqual = true;
+		}
+		return isEqual;
+	}
 </script>
 
 </html>
